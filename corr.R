@@ -9,10 +9,10 @@ corr <- function(directory, threshold = 0){
   pollutant_df <- bind_rows(f)
   pollutant_rmNa <- drop_na(pollutant_df,sulfate,nitrate)
   complete_case <- complete(directory)
-  complete_bythr <- complete_case[complete_case$nobs > threshold,]
+  complete_bythr <- complete_case[complete_case$nobs >threshold,]
   j <- 1
   cr <-list()
-  for( ids in complete_bythr$ID){
+  for( ids in complete_bythr$id){
     each_id <- pollutant_rmNa[pollutant_rmNa$ID == ids,]
     cr[[j]] <- cor(each_id$sulfate,each_id$nitrate)
     j <- j+1
